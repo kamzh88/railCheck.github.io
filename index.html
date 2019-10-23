@@ -51,74 +51,14 @@
                 <div class="row">
                     <div id="results"></div>
                 </div>
-
             </div>
         </div>
-
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-        <script>
-
-            $(document).ready(function () {
-
-                var total = 3;
-                var correct = 0;
-                var incorrect = 0;
-                var unanswered = 0;
-                var time = 10;
-                var intervalId;
-
-                $(".submit").on("click", function () {
-                    
-                    var q1 = document.forms["quizForm"]["q1"].value;
-                    var q2 = document.forms["quizForm"]["q2"].value;
-                    var q3 = document.forms["quizForm"]["q3"].value;
-                    var answers = ["b", "c", "d"];
-
-                    for (i = 1; i <= total; i++) {
-                        if (eval("q" + i) === answers[i - 1]) {
-                            correct++;
-                        }
-                        else if (eval("q" + i) != answers[i - 1]) {
-                            incorrect++;
-                        };
-                        // if (eval("q" + i) != eval("q" + i).value) {
-                        //     unanswered++;
-                        // }
-                    };
-
-                    results()
-                });
-
-                $(".start").on("click", function () {
-                    $(".start").remove();
-                    $("#invisible").toggleClass("show");
-                    decrement()
-                });
-
-                function results() {
-                    $(".submit").remove();
-                    $("#invisible").removeClass("show");
-                    unanswered = (3-(correct+incorrect));
-                    var resultsDiv = $("<div>");
-                    var p1 = $("<p>").text("Correct: " + correct);
-                    var p2 = $("<p>").text("Incorrect: " + incorrect);
-                    var p3 = $("<p>").text("Unanswered: " + unanswered);
-                    resultsDiv.append(p1, p2, p3);
-                    $("#results").append(resultsDiv);
-                }
-
-                function decrement() {
-                    clearInterval(intervalId);
-                    intervalId = setInterval(decrement, 1000);
-                    time --;
-                    $(".time-text").html("<h2>" + time + "</h2>");
-                    if (time === 0){
-                        results();
-                    }
-                };
-            });
+        <script src="..//railCheck.github.io/assets/javascript/app.js">
+            
         </script>
 </body>
+
 
 </html>
